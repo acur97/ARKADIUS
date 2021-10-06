@@ -1,0 +1,27 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class ControlParticulas : MonoBehaviour
+{
+    public AudioSpectrum Aspectrum;
+    public ParticleSystem ps;
+    public float multiplicador;
+    public float speed = 1;
+
+    private float velocidad;
+    private ParticleSystem.MainModule main;
+
+    private void Awake()
+    {
+        main = ps.main;
+    }
+
+    void Update()
+    {
+        velocidad = Aspectrum.amplitudeBuffer * multiplicador;
+
+        main.simulationSpeed = velocidad;
+        main.startSpeed = speed;
+    }
+}

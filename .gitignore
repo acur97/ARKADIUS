@@ -53,8 +53,15 @@ sysinfo.txt
 
 # Builds
 *.apk
-*.unitypackage
 
 # Crashlytics generated file
 crashlytics-build.properties
 
+# Custom ignores
+!*.dll
+!*.json
+/screenshots/*
+!*.unitypackage
+
+# rest of .gitignore
+Recordings/

@@ -16,6 +16,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 /// <summary>
 /// Controls the player's movement in virtual reality.
@@ -27,10 +28,10 @@ public class OVRPlayerController : MonoBehaviour
 	/// The rate acceleration during movement.
 	/// </summary>
 	public float Acceleration = 0.1f;
-	public GameObject[] Instrucciones;
-	bool Ins;
-	public Animator Ilum1;
-	public GameObject Tutorial;
+	//public GameObject[] Instrucciones;
+	//bool Ins;
+	//public Animator Ilum1;
+	//public GameObject Tutorial;
 
 	/// <summary>
 	/// The rate of damping on movement.
@@ -163,7 +164,7 @@ public class OVRPlayerController : MonoBehaviour
 		var p = CameraRig.transform.localPosition;
 		p.z = OVRManager.profile.eyeDepth;
 		CameraRig.transform.localPosition = p;
-		Ins= true;
+		//Ins= true;
 
 	}
 
@@ -350,15 +351,15 @@ public class OVRPlayerController : MonoBehaviour
 			// Hack Instrucciones
 
 			if (OVRInput.Get(OVRInput.Button.One)){
-				Instrucciones[0].SetActive(false);
-				Instrucciones[1].SetActive(true);
-				Ins = false;
+				//Instrucciones[0].SetActive(false);
+				//Instrucciones[1].SetActive(true);
+				//Ins = false;
 			}
 
 			if (OVRInput.Get(OVRInput.Button.Three))
 			{
-				Instrucciones[1].SetActive(false);
-				Tutorial.SetActive(true);
+				//Instrucciones[1].SetActive(false);
+				//Tutorial.SetActive(true);
 			}
 
 			if (OVRInput.Get(OVRInput.Button.Four))
@@ -637,5 +638,22 @@ public class OVRPlayerController : MonoBehaviour
 			euler.y = InitialYRotation;
 			transform.rotation = Quaternion.Euler(euler);
 		}
+	}
+
+	[HideInInspector] public bool waiting = false;
+	private WaitForSecondsRealtime wait = new WaitForSecondsRealtime(2.5f);
+
+	public void Iteleported()
+	{
+
+		StartCoroutine(WaitDoor());
+	}
+
+	IEnumerator WaitDoor()
+	{
+		waiting = true;
+		yield return wait;
+		waiting = false;
+
 	}
 }

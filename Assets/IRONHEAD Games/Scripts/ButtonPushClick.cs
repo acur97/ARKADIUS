@@ -7,7 +7,6 @@ public class ButtonPushClick : MonoBehaviour
 {
     public int Bases;
     public int Objetos;
-    public SonidosInicio Manager;
     public float MinLocalY = 0.25f;
     public float MaxLocalY = 0.55f;
   
@@ -54,8 +53,6 @@ public class ButtonPushClick : MonoBehaviour
     {
         GetComponent<MeshRenderer>().material = greenMat;
         GetComponent<Collider>().isTrigger = true;
-        Manager.ActivarSonidos(Objetos);
-        Manager.StartCoroutine(Manager.ChangeSpeed(0f, 1f, 10f, Manager.combos[Bases].sonido));
     }
 
 

@@ -21,7 +21,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.formats.fbx": {
-      "version": "4.1.1",
+      "version": "4.1.2",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -31,7 +31,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.postprocessing": {
-      "version": "3.1.1",
+      "version": "3.2.1",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -40,7 +40,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.test-framework": {
-      "version": "1.1.29",
+      "version": "1.1.31",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -60,7 +60,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.timeline": {
-      "version": "1.6.2",
+      "version": "1.6.4",
       "depth": 0,
       "source": "registry",
       "dependencies": {

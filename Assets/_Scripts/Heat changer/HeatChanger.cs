@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.Audio;
-using UnityEngine.Rendering.PostProcessing;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 [ExecuteInEditMode]
 public class HeatChanger : MonoBehaviour
@@ -13,15 +14,24 @@ public class HeatChanger : MonoBehaviour
     private float lastHeat = 0;
     private float invertHeat = 1;
 
+    [System.Serializable] private class Blends
+    {
+        public Material mat;
+        public ReflectionProbe probe1;
+        public float intensity1 = 2;
+        public ReflectionProbe probe2;
+        public float intensity2 = 2;
+    }
     [Space]
-    [SerializeField] private Material[] materials;
+    [SerializeField] Blends[] blends;
     [SerializeField] private AudioMixer mixer;
     [SerializeField] private WindZone zone;
-    [SerializeField] private PostProcessVolume volume;
+    [SerializeField] private Volume volume;
     [SerializeField] private AnimationCurve truenos;
     private float truenosVal = 0;
     private float truenosVal2 = 0;
-    private ColorGrading cGrading;
+    private WaitForSeconds wait;
+    private ColorAdjustments colorAdjustments;
 
     private const string _Blend = "_Blend";
     private const string _Vol_Musica_Fuerte = "Vol_Musica_Fuerte";
@@ -31,13 +41,13 @@ public class HeatChanger : MonoBehaviour
     {
         Instance = this;
 
-        volume.profile.TryGetSettings(out cGrading);
+        volume.profile.TryGet(out colorAdjustments);
+
+        wait = new WaitForSeconds(0.5f);
     }
 
     private void Start()
     {
-        Instance = this;
-
         lastHeat = heat;
         invertHeat = heat.Remap(0, 1, 1, 0);
         Change();
@@ -46,9 +56,11 @@ public class HeatChanger : MonoBehaviour
 
     private void Change()
     {
-        for (int i = 0; i < materials.Length; i++)
+        for (int i = 0; i < blends.Length; i++)
         {
-            materials[i].SetFloat(_Blend, heat);
+            blends[i].mat.SetFloat(_Blend, heat);
+            blends[i].probe1.intensity = invertHeat * blends[i].intensity1;
+            blends[i].probe2.intensity = heat * blends[i].intensity2;
         }
         mixer.SetFloat(_Vol_Musica_Suave, ToVolume(invertHeat));
         mixer.SetFloat(_Vol_Musica_Fuerte, ToVolume(heat));
@@ -71,7 +83,7 @@ public class HeatChanger : MonoBehaviour
             truenosVal = 0;
         }
 
-        cGrading.postExposure.value = truenos.Evaluate(truenosVal) * heat - 1;
+        colorAdjustments.postExposure.value = truenos.Evaluate(truenosVal) * heat - 1;
     }
 
     private float ToVolume(float value)
@@ -84,7 +96,7 @@ public class HeatChanger : MonoBehaviour
         truenosVal2 = 0;
         yield return new WaitForSeconds(Random.Range(1, 10));
         truenosVal2 = 1;
-        yield return new WaitForSeconds(0.5f);
+        yield return wait;
         StartCoroutine(TruenosPausa());
     }
 }

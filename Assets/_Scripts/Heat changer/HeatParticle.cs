@@ -12,7 +12,6 @@ public class HeatParticle : MonoBehaviour
 
     private void Awake()
     {
-        changer = HeatChanger.Instance;
         particle = GetComponent<ParticleSystem>();
         if (Application.isPlaying)
         {
@@ -22,6 +21,8 @@ public class HeatParticle : MonoBehaviour
 
     private void Start()
     {
+        changer = HeatChanger.Instance;
+
         if (Application.isPlaying)
         {
             module.rateOverTime = rateOverTime;

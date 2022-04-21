@@ -2,16 +2,21 @@ using UnityEngine;
 
 public class RenderCamera : MonoBehaviour
 {
-    public Camera camToRender;
+    [SerializeField] private bool disabler = true;
+    [SerializeField] private Camera camToRender;
 
     private void Awake()
     {
-        camToRender.enabled = false;
+        if (disabler)
+            camToRender.enabled = false;
+        else
+            camToRender.enabled = true;
     }
 
     private void OnBecameInvisible()
     {
-        camToRender.enabled = false;
+        if (disabler)
+            camToRender.enabled = false;
     }
 
     private void OnBecameVisible()

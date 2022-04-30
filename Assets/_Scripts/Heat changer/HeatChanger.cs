@@ -94,7 +94,7 @@ public class HeatChanger : MonoBehaviour
     private IEnumerator TruenosPausa()
     {
         truenosVal2 = 0;
-        yield return new WaitForSeconds(Random.Range(1, 10));
+        yield return new WaitForSeconds(Random.Range(0, 8));
         truenosVal2 = 1;
         yield return wait;
         StartCoroutine(TruenosPausa());

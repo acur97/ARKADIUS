@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "ca.andydbc.unity-texture-packer": "https://github.com/andydbc/unity-texture-packer.git",
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.formats.fbx": "4.1.2",
     "com.unity.ide.visualstudio": "2.0.15",

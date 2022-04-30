@@ -32,6 +32,11 @@ public class HeatParticle : MonoBehaviour
 
     private void Update()
     {
+        if (changer == null)
+        {
+            changer = HeatChanger.Instance;
+        }
+
         if (!Application.isPlaying)
         {
             module = particle.emission;

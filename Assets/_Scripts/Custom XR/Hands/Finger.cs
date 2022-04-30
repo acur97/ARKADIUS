@@ -11,11 +11,13 @@ public enum FingerType
 public class Finger
 {
     public FingerType type = FingerType.None;
+    public string typeString = "None";
     public float current = 0;
     public float target = 0;
 
     public Finger(FingerType _type)
     {
         this.type = _type;
+        this.typeString = _type.ToString();
     }
 }

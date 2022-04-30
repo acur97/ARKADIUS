@@ -54,7 +54,14 @@ public class TalkSytem : MonoBehaviour
         Instance = this;
 
         LrenderFollowPadre = LrenderFollowTrue.parent;
-        root.gameObject.SetActive(false);
+        if (Application.isPlaying)
+        {
+            root.gameObject.SetActive(false);
+        }
+        else
+        {
+            root.gameObject.SetActive(true);
+        }
 
         canvaTransform = canva.GetComponent<RectTransform>();
 

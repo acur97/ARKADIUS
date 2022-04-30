@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/_Scenes/SkyClouds/Sky Clouds last.unity
-    guid: b94f528eda8cbd1448c91a69c669497a
+    path: Assets/_Scenes/Clouds.unity
+    guid: 4326e776d9e5add429262d31a74bba7f
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 4cc1d200f2917bb4580df2cff46ca112,
       type: 2}

@@ -66,27 +66,40 @@ public class HandAnimator : MonoBehaviour
 
     private void SetFingerTargets(List<Finger> fingers, float value)
     {
-        foreach(Finger finger in fingers)
+        for (int i = 0; i < fingers.Count; i++)
         {
-            finger.target = value;
+            fingers[i].target = value;
         }
+        //foreach(Finger finger in fingers)
+        //{
+        //    finger.target = value;
+        //}
     }
 
     private void SmoothFinger(List<Finger> fingers)
     {
-        foreach(Finger finger in fingers)
+        for (int i = 0; i < fingers.Count; i++)
         {
             float time = speed * Time.unscaledDeltaTime;
-            finger.current = Mathf.MoveTowards(finger.current, finger.target, time);
+            fingers[i].current = Mathf.MoveTowards(fingers[i].current, fingers[i].target, time);
         }
+        //foreach(Finger finger in fingers)
+        //{
+        //    float time = speed * Time.unscaledDeltaTime;
+        //    finger.current = Mathf.MoveTowards(finger.current, finger.target, time);
+        //}
     }
 
     private void AnimateFinger(List<Finger> fingers)
     {
-        foreach(Finger finger in fingers)
+        for (int i = 0; i < fingers.Count; i++)
         {
-            AnimateFinger(finger.type.ToString(), finger.current);
+            AnimateFinger(fingers[i].typeString, fingers[i].current);
         }
+        //foreach(Finger finger in fingers)
+        //{
+        //    AnimateFinger(finger.type.ToString(), finger.current);
+        //}
     }
 
     private void AnimateFinger(string finger, float blend)

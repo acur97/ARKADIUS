@@ -7,7 +7,7 @@ public class HandAnimator : MonoBehaviour
     [SerializeField] private float speed = 5;
     [SerializeField] private float gripMulti = 1;
     [SerializeField] private float pointerMulti = 1;
-    [SerializeField] private float teleportMulti = 1;
+    //[SerializeField] private float teleportMulti = 1;
 
     private ActionBasedController controller;
     private Animator anim;
@@ -25,13 +25,13 @@ public class HandAnimator : MonoBehaviour
         new Finger(FingerType.Thumb)
     };
 
-    private readonly List<Finger> teleportFingers = new List<Finger>()
-    {
-        new Finger(FingerType.Middle),
-        new Finger(FingerType.Ring),
-        new Finger(FingerType.Pinky),
-        new Finger(FingerType.Thumb)
-    };
+    //private readonly List<Finger> teleportFingers = new List<Finger>()
+    //{
+    //    new Finger(FingerType.Middle),
+    //    new Finger(FingerType.Ring),
+    //    new Finger(FingerType.Pinky),
+    //    new Finger(FingerType.Thumb)
+    //};
 
     private void Awake()
     {
@@ -70,10 +70,6 @@ public class HandAnimator : MonoBehaviour
         {
             fingers[i].target = value;
         }
-        //foreach(Finger finger in fingers)
-        //{
-        //    finger.target = value;
-        //}
     }
 
     private void SmoothFinger(List<Finger> fingers)
@@ -83,11 +79,6 @@ public class HandAnimator : MonoBehaviour
             float time = speed * Time.unscaledDeltaTime;
             fingers[i].current = Mathf.MoveTowards(fingers[i].current, fingers[i].target, time);
         }
-        //foreach(Finger finger in fingers)
-        //{
-        //    float time = speed * Time.unscaledDeltaTime;
-        //    finger.current = Mathf.MoveTowards(finger.current, finger.target, time);
-        //}
     }
 
     private void AnimateFinger(List<Finger> fingers)
@@ -96,10 +87,6 @@ public class HandAnimator : MonoBehaviour
         {
             AnimateFinger(fingers[i].typeString, fingers[i].current);
         }
-        //foreach(Finger finger in fingers)
-        //{
-        //    AnimateFinger(finger.type.ToString(), finger.current);
-        //}
     }
 
     private void AnimateFinger(string finger, float blend)

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class SmoothFollow : MonoBehaviour
 {
-    public enum TipoVista { Ojos, Cara, Cuerpo }
+    public enum TipoVista { Ojos, /*Cara,*/ Cuerpo }
     public TipoVista vista;
     public Transform toFollow;
     public bool following = false;
@@ -10,7 +10,7 @@ public class SmoothFollow : MonoBehaviour
     [Space]
     [SerializeField] private float velocity = 0.5f;
     [SerializeField] private float smoothOjos = 5;
-    [SerializeField] private float smoothCara = 2.5f;
+    //[SerializeField] private float smoothCara = 2.5f;
     [SerializeField] private float smoothCuerpo = 1;
 
     [Space]
@@ -24,7 +24,7 @@ public class SmoothFollow : MonoBehaviour
 
     private Transform lastFollow;
     private Vector3 desiredPositionOjos;
-    private Vector3 desiredPositionCara;
+    //private Vector3 desiredPositionCara;
     private Vector3 desiredPositionCuerpo;
 
     private void Awake()

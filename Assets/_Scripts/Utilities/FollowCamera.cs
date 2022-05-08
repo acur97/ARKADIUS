@@ -39,6 +39,8 @@ public class FollowCamera : MonoBehaviour
     {
         cam.projectionMatrix = centerEyeCamera.projectionMatrix;
         //cam.fieldOfView = centerEyeCamera.fieldOfView;
+        //cam.nearClipPlane = centerEyeCamera.nearClipPlane;
+        //cam.farClipPlane = centerEyeCamera.farClipPlane;
 
         transform.position = gameCamera.transform.position + Offset;
         transform.eulerAngles = gameCamera.transform.eulerAngles + OffsetRot;

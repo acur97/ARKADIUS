@@ -115,10 +115,10 @@ Material:
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _Offset: {r: 0.236, g: 0, b: 0, a: 0}
-    - _Offset2: {r: 0.264, g: 0, b: 0, a: 0}
-    - _Tiling: {r: 0.5, g: 1, b: 0, a: 0}
-    - _Tiling2: {r: 0.5, g: 1, b: 0, a: 0}
+    - _Offset: {r: 0.238, g: -0.0025, b: 0, a: 0}
+    - _Offset2: {r: 0.2655, g: -0.0025, b: 0, a: 0}
+    - _Tiling: {r: 0.4965, g: 1, b: 0, a: 0}
+    - _Tiling2: {r: 0.4965, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &4549051899471256970
 MonoBehaviour:

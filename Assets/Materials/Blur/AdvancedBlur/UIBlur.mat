@@ -67,7 +67,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - BlurX: 0.008437499
+    - BlurX: 0.008333334
     - BlurY: 0.015
     - _AlphaClip: 0
     - _Blend: 0

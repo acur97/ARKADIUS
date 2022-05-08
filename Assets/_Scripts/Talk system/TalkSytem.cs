@@ -23,7 +23,7 @@ public class TalkSytem : MonoBehaviour
     private RectTransform canvaTransform;
     [SerializeField] private TextMeshProUGUI txt;
     private string _texto;
-    private bool readyText = false;
+    //private bool readyText = false;
 
     [Space]
     [SerializeField] private Transform LrenderFollow;
@@ -374,14 +374,14 @@ public class TalkSytem : MonoBehaviour
 
     private IEnumerator PlayText(string _text)
     {
-        readyText = false;
+        //readyText = false;
         foreach (char c in _text)
         {
             _texto += c;
             txt.SetText(_texto);
             yield return wait;
         }
-        readyText = true;
+        //readyText = true;
     }
 
     public void UnsetText()

@@ -21,6 +21,9 @@ public class LevelerDriver : MonoBehaviour
     [SerializeField] private float giro1;
     [SerializeField] private float giro2;
 
+    [Space]
+    [SerializeField] private PortalTeleporter teleporter;
+
     private float val1;
     private float val2;
 
@@ -90,7 +93,6 @@ public class LevelerDriver : MonoBehaviour
         palanca2.localRotation = Quaternion.Euler(val2, 180, 0);
 
 
-
         if (handle1.isSelected && handle2.isSelected)
         {
             entroOffset = true;
@@ -105,6 +107,11 @@ public class LevelerDriver : MonoBehaviour
                 entroOffset = false;
             }
             //door.localEulerAngles = new Vector3(0, 0, (giro1 * multiDoor) + (giro2 * multiDoor));
+        }
+
+        if (door.localEulerAngles.z >= 90)
+        {
+            teleporter.canTeleport = true;
         }
     }
 }

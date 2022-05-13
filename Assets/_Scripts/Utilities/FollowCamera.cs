@@ -10,6 +10,7 @@ public class FollowCamera : MonoBehaviour
     [SerializeField] private Camera cam;
     [SerializeField] private Camera centerEyeCamera;
     [SerializeField] private Camera gameCamera;
+    private Camera thisCamera;
 
     [Space]
     [SerializeField] Vector3 Offset = Vector3.zero;
@@ -26,6 +27,15 @@ public class FollowCamera : MonoBehaviour
     private readonly int _Texture2D = Shader.PropertyToID("_Texture2D");
     private readonly int _Texture2D2 = Shader.PropertyToID("_Texture2D2");
 
+    private void Awake()
+    {
+        thisCamera = GetComponent<Camera>();
+        if (Application.isPlaying)
+        {
+            thisCamera.enabled = false;
+        }
+    }
+
     private void OnEnable()
     {
         RenderPipelineManager.beginCameraRendering += UpdateCamera;
@@ -37,37 +47,41 @@ public class FollowCamera : MonoBehaviour
 
     private void UpdateCamera(ScriptableRenderContext context, Camera camera)
     {
-        cam.projectionMatrix = centerEyeCamera.projectionMatrix;
-        //cam.fieldOfView = centerEyeCamera.fieldOfView;
-        //cam.nearClipPlane = centerEyeCamera.nearClipPlane;
-        //cam.farClipPlane = centerEyeCamera.farClipPlane;
-
-        transform.position = gameCamera.transform.position + Offset;
-        transform.eulerAngles = gameCamera.transform.eulerAngles + OffsetRot;
-
-        if (Application.isPlaying)
+        if (thisCamera.enabled)
         {
-            if (XRSettings.eyeTextureWidth > 0 && screenRes.x == 0)
+            cam.projectionMatrix = centerEyeCamera.projectionMatrix;
+            //cam.fieldOfView = centerEyeCamera.fieldOfView;
+            //cam.nearClipPlane = centerEyeCamera.nearClipPlane;
+            //cam.farClipPlane = centerEyeCamera.farClipPlane;
+
+            transform.position = gameCamera.transform.position + Offset;
+            transform.eulerAngles = gameCamera.transform.eulerAngles + OffsetRot;
+        }
+
+        if (Application.isPlaying && XRSettings.eyeTextureWidth > 0 && screenRes.x == 0)
+        {
+            screenRes = new Vector2(XRSettings.eyeTextureWidth * resScale, XRSettings.eyeTextureHeight * resScale);
+            if (secondEye)
             {
-                screenRes = new Vector2(XRSettings.eyeTextureWidth * resScale, XRSettings.eyeTextureHeight * resScale);
-                if (secondEye)
+                rt2 = new RenderTexture((int)screenRes.x, (int)screenRes.y, 0, UnityEngine.Experimental.Rendering.GraphicsFormat.B10G11R11_UFloatPack32)
                 {
-                    rt2 = new RenderTexture((int)screenRes.x, (int)screenRes.y, 0, UnityEngine.Experimental.Rendering.GraphicsFormat.B10G11R11_UFloatPack32);
-                    rt2.memorylessMode = rtml;
-                    rt2.anisoLevel = 0;
-                    rt2.vrUsage = vrFormat;
-                    cam.targetTexture = rt2;
-                    material.SetTexture(_Texture2D2, rt2);
-                }
-                else
+                    memorylessMode = rtml,
+                    anisoLevel = 0,
+                    vrUsage = vrFormat
+                };
+                cam.targetTexture = rt2;
+                material.SetTexture(_Texture2D2, rt2);
+            }
+            else
+            {
+                rt = new RenderTexture((int)screenRes.x, (int)screenRes.y, 0, UnityEngine.Experimental.Rendering.GraphicsFormat.B10G11R11_UFloatPack32)
                 {
-                    rt = new RenderTexture((int)screenRes.x, (int)screenRes.y, 0, UnityEngine.Experimental.Rendering.GraphicsFormat.B10G11R11_UFloatPack32);
-                    rt.memorylessMode = rtml;
-                    rt.anisoLevel = 0;
-                    rt.vrUsage = vrFormat;
-                    cam.targetTexture = rt;
-                    material.SetTexture(_Texture2D, rt);
-                }
+                    memorylessMode = rtml,
+                    anisoLevel = 0,
+                    vrUsage = vrFormat
+                };
+                cam.targetTexture = rt;
+                material.SetTexture(_Texture2D, rt);
             }
         }
     }

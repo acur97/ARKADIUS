@@ -60,7 +60,9 @@ public class HeatChanger : MonoBehaviour
         {
             blends[i].mat.SetFloat(_Blend, heat);
             blends[i].probe1.intensity = invertHeat * blends[i].intensity1;
+            //blends[i].probe1.importance = invertHeat;
             blends[i].probe2.intensity = heat * blends[i].intensity2;
+            //blends[i].probe2.importance = heat;
         }
         mixer.SetFloat(_Vol_Musica_Suave, ToVolume(invertHeat));
         mixer.SetFloat(_Vol_Musica_Fuerte, ToVolume(heat));

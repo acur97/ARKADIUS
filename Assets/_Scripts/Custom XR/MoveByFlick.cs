@@ -3,6 +3,7 @@ using UnityEngine;
 public class MoveByFlick : MonoBehaviour
 {
     [SerializeField] private float zLimit = 10;
+    [SerializeField] private float zLimit2 = 10;
     [SerializeField] private float flickSpeed = -0.002f;
     [SerializeField] private RotationConstraintEuler rotationEuler;
     [SerializeField] Transform grab;
@@ -30,6 +31,7 @@ public class MoveByFlick : MonoBehaviour
         grab.localPosition = Vector3.zero;
         rotationEuler.canUpdate = false;
         rotationEuler.ResetValues();
+        root.localPosition = new Vector3(0, root.localPosition.y, Mathf.Clamp(root.localPosition.z, 0, zLimit2));
     }
 
     private void Update()

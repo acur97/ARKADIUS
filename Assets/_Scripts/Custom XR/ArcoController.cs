@@ -32,6 +32,7 @@ public class ArcoController : MonoBehaviour
 
     [Space]
     public int tirosEnBlanco;
+    [SerializeField] private PortalTeleporter teleporter;
 
     private void Awake()
     {
@@ -55,6 +56,7 @@ public class ArcoController : MonoBehaviour
         else if (tirosEnBlanco == 3)
         {
             door.localEulerAngles = new Vector3(0, 0, 90);
+            teleporter.canTeleport = true;
         }
 
         lRender.SetPosition(0, root0.position);

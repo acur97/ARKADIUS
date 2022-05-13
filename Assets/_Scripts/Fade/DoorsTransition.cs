@@ -105,6 +105,10 @@ public class DoorsTransition : MonoBehaviour
             {
                 XRorigin.position = teleportTo.position;
                 XRorigin.position = new Vector3(XRorigin.position.x + teleportOffset.x, 0, XRorigin.position.z + teleportOffset.z);
+                XRorigin.position += cameraOffset.localPosition;
+                XRorigin.position = new Vector3(XRorigin.position.x, 0, XRorigin.position.z);
+                XRorigin.localScale = Vector3.one;
+                cameraOffset.localPosition = Vector3.zero;
                 cameraOffset.localScale = Vector3.one;
             }
             else if (change2 < 1)

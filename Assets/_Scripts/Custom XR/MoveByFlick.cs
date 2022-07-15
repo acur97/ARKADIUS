@@ -15,6 +15,7 @@ public class MoveByFlick : MonoBehaviour
     private bool select = false;
     private float newZ = 0;
     private float newZ2 = 0;
+    private Vector3 newPos = Vector3.zero;
 
     public void OnSelect()
     {
@@ -38,11 +39,15 @@ public class MoveByFlick : MonoBehaviour
     {
         if (select)
         {
-            move.localPosition = new Vector3(move.localPosition.x, move.localPosition.y, newZ + (rotationEuler.totalRotation * flickSpeed));
-            root.localPosition = new Vector3(move.localPosition.x, move.localPosition.y, newZ2 + (rotationEuler.totalRotation * flickSpeed));
+            newPos = new Vector3(move.localPosition.x, move.localPosition.y, newZ + (rotationEuler.totalRotation * flickSpeed));
+            if (newPos.z > move.localPosition.z)
+            {
+                move.localPosition = newPos;
+                root.localPosition = new Vector3(move.localPosition.x, move.localPosition.y, newZ2 + (rotationEuler.totalRotation * flickSpeed));
 
-            move.localPosition = new Vector3(move.localPosition.x, move.localPosition.y, Mathf.Clamp(move.localPosition.z, 0, zLimit));
-            root.localPosition = new Vector3(root.localPosition.x, root.localPosition.y, Mathf.Clamp(root.localPosition.z, 0, zLimit));
+                move.localPosition = new Vector3(move.localPosition.x, move.localPosition.y, Mathf.Clamp(move.localPosition.z, 0, zLimit));
+                root.localPosition = new Vector3(root.localPosition.x, root.localPosition.y, Mathf.Clamp(root.localPosition.z, 0, zLimit));
+            }
         }
     }
 }

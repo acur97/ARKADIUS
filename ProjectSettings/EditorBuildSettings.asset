@@ -8,6 +8,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/Clouds.unity
     guid: 4326e776d9e5add429262d31a74bba7f
+  - enabled: 1
+    path: Assets/_Scenes/Earth.unity
+    guid: 193fb32883150f140b01e63b92b71988
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 4cc1d200f2917bb4580df2cff46ca112,
       type: 2}

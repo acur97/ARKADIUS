@@ -22,6 +22,7 @@ public class FollowCamera : MonoBehaviour
     [SerializeField] private VRTextureUsage vrFormat;
     [SerializeField] private RenderTexture rTexture;
     [SerializeField] private Material material;
+    [SerializeField] private Material materialCutout;
     private RenderTexture rt;
     private RenderTexture rt2;
     private readonly int _Texture2D = Shader.PropertyToID("_Texture2D");
@@ -71,6 +72,10 @@ public class FollowCamera : MonoBehaviour
                 };
                 cam.targetTexture = rt2;
                 material.SetTexture(_Texture2D2, rt2);
+                if (materialCutout != null)
+                {
+                    materialCutout.SetTexture(_Texture2D2, rt2);
+                }
             }
             else
             {
@@ -82,6 +87,10 @@ public class FollowCamera : MonoBehaviour
                 };
                 cam.targetTexture = rt;
                 material.SetTexture(_Texture2D, rt);
+                if (materialCutout != null)
+                {
+                    materialCutout.SetTexture(_Texture2D, rt);
+                }
             }
         }
     }
@@ -93,12 +102,20 @@ public class FollowCamera : MonoBehaviour
             rt2 = rTexture;
             cam.targetTexture = rt2;
             material.SetTexture(_Texture2D2, rt2);
+            if (materialCutout != null)
+            {
+                materialCutout.SetTexture(_Texture2D2, rt2);
+            }
         }
         else
         {
             rt = rTexture;
             cam.targetTexture = rt;
             material.SetTexture(_Texture2D, rt);
+            if (materialCutout != null)
+            {
+                materialCutout.SetTexture(_Texture2D, rt);
+            }
         }
     }
 }

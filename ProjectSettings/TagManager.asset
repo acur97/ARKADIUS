@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Flecha
+  - Mano
   layers:
   - Default
   - TransparentFX
@@ -12,13 +13,13 @@ TagManager:
   - Hand
   - Water
   - UI
-  - 
+  - Oculto
   - 
   - PostProcessing
   - Default2
   - Default3
   - Default4
-  - 
+  - Default5
   - 
   - 
   - 

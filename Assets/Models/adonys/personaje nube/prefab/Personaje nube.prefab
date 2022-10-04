@@ -5248,7 +5248,6 @@ MonoBehaviour:
   following: 0
   velocity: 0.5
   smoothOjos: 5
-  smoothCara: 2.5
   smoothCuerpo: 1
   vistaOjos: {fileID: 6221998668569021258}
   vistaCara: {fileID: 0}
@@ -5268,7 +5267,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   root: {fileID: 4719336472691653669}
-  offset: {x: 0, y: 0.1, z: 0}
+  offset: {x: 0, y: 0.2, z: 0}
   smooth: 0.5
   curve:
     serializedVersion: 2

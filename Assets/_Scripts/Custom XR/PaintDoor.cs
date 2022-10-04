@@ -1,18 +1,50 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PaintDoor : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public PortalTeleporter door;
+
+    [Space]
+    public bool withParticle = true;
+    public int particleCount = 20;
+    public int countToReady = 45;
+    public ParticleSystem[] particles;
+    private bool[] readys;
+    public bool ready;
+    private int readyTest;
+
+    private void Awake()
     {
-        
+        readys = new bool[particles.Length];
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ActivateParticle(int num)
     {
-        
+        if (!ready)
+        {
+            if (!readys[num])
+            {
+                if (withParticle)
+                {
+                    particles[num].Emit(particleCount);
+                }
+                readys[num] = true;
+            }
+
+            readyTest = 0;
+            for (int i = 0; i < particles.Length; i++)
+            {
+                if (readys[i] == true)
+                {
+                    readyTest++;
+                }
+            }
+
+            if (readyTest >= countToReady)
+            {
+                ready = true;
+                door.canTeleport = true;
+            }
+        }
     }
 }

@@ -57,11 +57,13 @@ Material:
     m_Ints: []
     m_Floats:
     - _Blend: 0
+    - _Dir1: -0.24
+    - _Dir2: 0
     - _LOD1: 0
     - _LOD2: 0
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
-    - _Color_1: {r: 2.9960785, g: 2.9960785, b: 2.9960785, a: 1}
+    - _Color_1: {r: 1.4980392, g: 1.4980392, b: 1.4980392, a: 1}
     - _Color_2: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []

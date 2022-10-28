@@ -12,7 +12,7 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: UDEM
+  companyName: UdeM & EAFIT
   productName: ARKADIUS
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
@@ -134,7 +134,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: 0.2
+  bundleVersion: 1.0
   preloadedAssets:
   - {fileID: 0}
   - {fileID: 0}
@@ -151,9 +151,6 @@ PlayerSettings:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 2281195015892670446, guid: c7d4fcf762ccbb04085f1efe12b84dac, type: 2}
-  - {fileID: -6191008191810694190, guid: f85dbd55ea8ee904cbe3351049e074f9, type: 2}
-  - {fileID: 11400000, guid: 4cc1d200f2917bb4580df2cff46ca112, type: 2}
   - {fileID: 0}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
@@ -164,7 +161,7 @@ PlayerSettings:
     enable360StereoCapture: 0
   isWsaHolographicRemotingEnabled: 0
   enableFrameTimingStats: 0
-  enableOpenGLProfilerGPURecorders: 1
+  enableOpenGLProfilerGPURecorders: 0
   useHDRDisplay: 0
   D3DHDRBitDepth: 0
   m_ColorGamuts: 0000000003000000
@@ -174,7 +171,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Android: com.UDEM.ARKADIUS
+    Android: com.UDEMEAFIT.ARKADIUS
     Standalone: com.UDEM.ARKADIUS
   buildNumber:
     Standalone: 0
@@ -764,7 +761,7 @@ PlayerSettings:
   scriptingBackend:
     Android: 1
   il2cppCompilerConfiguration:
-    Android: 1
+    Android: 2
   managedStrippingLevel:
     Android: 1
     Standalone: 1

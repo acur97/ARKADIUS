@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PaintDoor : MonoBehaviour
 {
+    public GameObject paintAnim;
     public PortalTeleporter door;
 
     [Space]
@@ -20,6 +21,11 @@ public class PaintDoor : MonoBehaviour
 
     public void ActivateParticle(int num)
     {
+        if (paintAnim.activeSelf)
+        {
+            paintAnim.SetActive(false);
+        }
+
         if (!ready)
         {
             if (!readys[num])

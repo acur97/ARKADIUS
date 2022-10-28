@@ -109,13 +109,14 @@ public class DoorsTransition : MonoBehaviour
                 XRorigin.position = new Vector3(XRorigin.position.x, 0, XRorigin.position.z);
                 XRorigin.localScale = Vector3.one;
                 cameraOffset.localPosition = Vector3.zero;
-                cameraOffset.localScale = Vector3.one;
+                cameraOffset.localScale = new Vector3(1.4f, 1.4f, 1.4f);
             }
             else if (change2 < 1)
             {
                 newXRpos = Vector3.Lerp(XRorigin.position, moveTo.position, valCurve * speedTransitionMove);
                 newXRpos = new Vector3(newXRpos.x, 0, newXRpos.z);
                 XRorigin.transform.position = newXRpos;
+                XRorigin.transform.localPosition = new Vector3(XRorigin.transform.localPosition.x, 0, XRorigin.transform.localPosition.z);
             }
         }
     }
